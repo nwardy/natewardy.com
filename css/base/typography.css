@@ -1,0 +1,189 @@
+/* Base Typography */
+body {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-white);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-base);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-light);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-light);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+}
+
+h6 {
+  font-size: var(--font-size-base);
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: var(--spacing-base);
+  max-width: var(--max-width-text);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Links */
+a {
+  color: var(--color-text-primary);
+  transition: color var(--transition-fast);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-accent);
+}
+
+/* Lists */
+ul,
+ol {
+  margin-bottom: var(--spacing-base);
+}
+
+li {
+  margin-bottom: var(--spacing-sm);
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* Strong and emphasis */
+strong,
+b {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+/* Small text */
+small {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+/* Code */
+code {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-secondary-bg);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+}
+
+/* Section titles */
+.section-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-light);
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  color: var(--color-black);
+  position: relative;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 1px;
+  background-color: var(--color-black);
+  margin: var(--spacing-lg) auto 0;
+  opacity: 0.3;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+  
+  body {
+    line-height: 1.7; /* Increased from 1.6 for better readability */
+  }
+  
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .section-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-3xl); /* Increased margin for better spacing */
+  }
+  
+  /* Better paragraph spacing on mobile */
+  p {
+    margin-bottom: var(--spacing-lg); /* Increased from base to lg */
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+  
+  body {
+    line-height: 1.8; /* Increased from 1.5 for better readability */
+  }
+  
+  .section-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-4xl); /* Increased for more breathing room */
+  }
+  
+  .section-title::after {
+    width: 40px;
+    height: 1px;
+    margin-top: var(--spacing-lg); /* Increased from base to lg */
+  }
+  
+  /* Better spacing for mobile paragraphs */
+  p {
+    margin-bottom: var(--spacing-xl); /* Increased for better separation */
+    line-height: 1.8; /* Better line spacing */
+  }
+} 

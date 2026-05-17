@@ -1,0 +1,325 @@
+/* Education Section */
+.education {
+  padding: var(--spacing-5xl) 0;
+  background-color: var(--color-white);
+}
+
+.education .container {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.education-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.degree {
+  background-color: var(--color-white);
+  padding: var(--spacing-2xl);
+  border: none;
+  border-radius: var(--border-radius-lg);
+  box-shadow: none;
+  margin-bottom: var(--spacing-3xl);
+  transition: background-color var(--transition-base);
+}
+
+.degree:hover {
+  background-color: var(--color-white);
+}
+
+.school {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-base);
+}
+
+.school-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+  /* White logo — invert to black in light mode */
+  filter: invert(1);
+}
+
+body.dark .school-logo {
+  /* White logo — show as-is on dark background */
+  filter: invert(0);
+}
+
+.degree-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-base);
+  flex-wrap: wrap;
+  gap: var(--spacing-base);
+}
+
+.degree-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-accent);
+}
+
+.gpa {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-base);
+}
+
+.activities-section {
+  margin-bottom: var(--spacing-base);
+}
+
+.activities-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.activities-logos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.activity-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: grayscale(1);
+  mix-blend-mode: multiply;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast);
+}
+
+.activity-logo:hover {
+  opacity: 1;
+}
+
+body.dark .activity-logo {
+  mix-blend-mode: screen;
+  filter: grayscale(1);
+}
+
+.activity-logo--invert {
+  filter: grayscale(1) invert(1);
+}
+
+body.dark .activity-logo--invert {
+  filter: grayscale(1) invert(0);
+}
+
+body.dark .activity-logo--invert-dark {
+  filter: grayscale(1) invert(1);
+}
+
+.activity-logo-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.08em;
+  color: var(--color-black);
+  border: none;
+  opacity: 0.75;
+  flex-shrink: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.activity-logo-text:hover {
+  opacity: 1;
+}
+
+.activities,
+.coursework {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-sm);
+  max-width: none;
+}
+
+.achievements,
+.volunteering {
+  background-color: var(--color-white);
+  padding: var(--spacing-2xl);
+  border: none;
+  border-radius: var(--border-radius-lg);
+  box-shadow: none;
+  margin-bottom: var(--spacing-2xl);
+  transition: background-color var(--transition-base);
+}
+
+.achievements:hover,
+.volunteering:hover {
+  background-color: var(--color-white);
+}
+
+.volunteering {
+  margin-bottom: 0;
+}
+
+.achievements-title,
+.volunteering-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.awards-list,
+.volunteer-list {
+  margin: 0;
+  padding-left: 0;
+}
+
+.awards-list li,
+.volunteer-list li {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+  list-style: none;
+  padding-left: 1.5em;
+  position: relative;
+}
+
+.awards-list li::before,
+.volunteer-list li::before {
+  content: '•';
+  color: var(--color-accent);
+  font-size: var(--font-size-lg);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5em;
+  text-align: left;
+}
+
+.volunteer-duration {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
+/* Mobile Education */
+@media (max-width: 768px) {
+  .education {
+    padding: var(--spacing-lg) 0 !important;
+  }
+
+  .education .container {
+    padding: 0 var(--spacing-base);
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .education-content {
+    max-width: 100%;
+  }
+
+  .degree {
+    padding: 0;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .school {
+    font-size: var(--font-size-lg);
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .school-logo {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .degree-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .degree-title {
+    font-size: var(--font-size-sm);
+  }
+
+  .gpa,
+  .activities,
+  .coursework {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .activities-section {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .activities-logos {
+    gap: var(--spacing-base);
+    flex-wrap: wrap;
+  }
+
+  .activity-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .activity-logo-text {
+    width: 36px;
+    height: 36px;
+    font-size: 10px;
+  }
+
+  .achievements,
+  .volunteering {
+    padding: 0;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .achievements-title,
+  .volunteering-title {
+    font-size: var(--font-size-base);
+    text-align: left;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .awards-list,
+  .volunteer-list {
+    padding-left: 0;
+  }
+
+  .awards-list li,
+  .volunteer-list li {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+    padding-left: 1.2em;
+    line-height: 1.5;
+  }
+
+  .awards-list li::before,
+  .volunteer-list li::before {
+    width: 1.2em;
+  }
+} 

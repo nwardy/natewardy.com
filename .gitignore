@@ -1,0 +1,16 @@
+# Claude Code memory
+.claude/
+
+# Sensitive / temp files
+assets/images/icons/acm.html
+
+# macOS
+.DS_Store
+Icon?
+**/.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

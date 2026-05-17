@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nathan Wardy - Software Engineer & Computer Engineering Student">
+    <title>Nathan Wardy - Software Engineer</title>
+    
+    <!-- Favicon (swapped by JS on dark/light toggle) -->
+    <link id="favicon" rel="icon" type="image/png" href="assets/images/favicon/logolight.png">
+    <link id="favicon-apple" rel="apple-touch-icon" href="assets/images/favicon/logolight.png">
+    
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;200;300;400&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css?v=2024072851">
+</head>
+<body>
+    <!-- Project sub-page (hidden until a project is opened) -->
+    <div id="project-page" style="display:none;" aria-hidden="true"></div>
+
+    <div id="main-content">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="content-wrapper">
+                <nav class="nav">
+                    <img src="assets/images/favicon/logolight.png" alt="Nathan Wardy" id="site-logo" class="logo">
+                    <ul class="nav-links">
+                        <li><a href="#technical">TECHNICAL</a></li>
+                        <li><a href="#projects">INITIATIVES</a></li>
+                        <li><a href="#experience">EXPERIENCE</a></li>
+                        <li><a href="#education">EDUCATION</a></li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Slide navigation dots -->
+    <nav class="slide-nav" aria-label="Section navigation">
+        <a href="#hero-section" class="slide-dot active" data-section="hero-section" aria-label="Home"></a>
+        <a href="#technical"    class="slide-dot"        data-section="technical"    aria-label="Technical"></a>
+        <a href="#projects"     class="slide-dot"        data-section="projects"     aria-label="Projects"></a>
+        <a href="#experience"   class="slide-dot"        data-section="experience"   aria-label="Experience"></a>
+        <a href="#education"    class="slide-dot"        data-section="education"    aria-label="Education"></a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero-section" class="hero">
+        <div class="container">
+            <div class="hero-box">
+                <div class="content-wrapper">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1 class="hero-title">NATHAN WARDY</h1>
+                            <p class="hero-subtitle">SOFTWARE ENGINEER & COMPUTER ENGINEERING STUDENT</p>
+                            <div class="hero-contact">
+                                <a href="mailto:natewardy@gmail.com">NATEWARDY@GMAIL.COM</a>
+                                <span>|</span>
+                                <a href="https://www.linkedin.com/in/nathanwardy/" target="_blank">LINKEDIN</a>
+                                <span>|</span>
+                                <a href="https://www.youtube.com/@WardyCreates" target="_blank">YOUTUBE</a>
+                            </div>
+                        </div>
+                        <div class="hero-photo">
+                            <img src="assets/images/hero/image0.jpeg" alt="Nathan Wardy" class="hero-canvas">
+                        </div>
+                        <div class="hero-about">
+                            <p>I WANT TO MAKE AN IMPACT ON THE WORLD, AND I BELIEVE ENGINEERING IS HOW I DO THAT.</p>
+                            <p>I AM FOCUSED ON LOOKING FOR HIGH RISK HIGH PRESSURE WITH HIGH IMPACT WORK.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section id="technical" class="technical">
+        <div class="container">
+            <div class="section-box">
+                <div class="content-wrapper">
+                    <div class="skills-header">
+                        <h2 class="section-title">TECHNICAL SKILLS</h2>
+                    </div>
+                    <div class="skills-chart" id="skills-chart"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="projects">
+        <div class="proj-container">
+            <div class="proj-carousel" aria-label="Initiatives carousel">
+                <button class="proj-arrow proj-arrow--prev" aria-label="Previous project">&#9650;</button>
+
+                <div class="proj-reel-clip">
+                    <div class="proj-reel" id="proj-reel">
+                        <article class="proj-slide active">
+                            <div class="proj-slide-media">
+                                <canvas class="proj-slide-img project-canvas" data-src="assets/images/projects/caliber.jpg"></canvas>
+                            </div>
+                            <div class="proj-slide-info">
+                                <span class="proj-count">01 / 11</span>
+                                <h3 class="proj-slide-title">CALIBER FRAUD DETECTION</h3>
+                                <p class="proj-slide-desc">Python app that analyzed terabytes of repair data, uncovering reporting discrepancies. Recovered $70K in lost revenue and flagged high-risk shops for audit.</p>
+                                <a href="#project/caliber-fraud-detection" class="proj-read-more">READ MORE</a>
+                            </div>
+                        </article>
+
+                        <article class="proj-slide">
+                            <div class="proj-slide-media">
+                                <canvas class="proj-slide-img project-canvas" data-src="assets/images/projects/tracerbot.jpg"></canvas>
+                            </div>
+                            <div class="proj-slide-info">
+                                <span class="proj-count">02 / 11</span>
+                                <h3 class="proj-slide-title">TRACERBOT</h3>
+                                <p class="proj-slide-desc">3D-printed tracked robot on Raspberry Pi with turret and OpenCV ML classifier for real-time target tracking. Controlled via SSH and HTTP.</p>
+                                <a href="#project/tracerbot" class="proj-read-more">READ MORE</a>
+                            </div>
+                        </article>
+
+                        <article class="proj-slide">
+                            <div class="proj-slide-media">
+                                <canvas class="proj-slide-img project-canvas" data-src="assets/images/projects/vuln.png"></canvas>
+                            </div>
+                            <div class="proj-slide-info">
+                                <span class="proj-count">03 / 11</span>
+                                <h3 class="proj-slide-title">VULNERABILITY REMEDIATION</h3>
+                                <p class="proj-slide-desc">Python tool with Google T5 NLP to generate remediation steps and automate ServiceNow-Jira workflows. Reduced open vulnerabilities by 90%.</p>
+                                <a href="#project/vulnerability-remediation" class="proj-read-more">READ MORE</a>
+                            </div>
+                        </article>
+
+                        <article class="proj-slide">
+                            <div class="proj-slide-media">
+                                <canvas class="proj-slide-img project-canvas" data-src="assets/images/projects/oasisSheild.png"></canvas>
+                            </div>
+                            <div class="proj-slide-info">
+                                <span class="proj-count">04 / 11</span>
+                                <h3 class="proj-slide-title">OASIS SHIELD</h3>
+                                <p class="proj-slide-desc">AWS migration for critical mail-service infrastructure, consolidating microservices and improving reliability across enterprise document workflows.</p>
+                                <a href="#project/oasis-shield" class="proj-read-more">READ MORE</a>
+                            </div>
+                        </article>
+
+                        <article class="proj-slide">
+                            <div class="proj-slide-media">
+                                <canvas class="proj-slide-img project-canvas" data-src="assets/images/projects/centag1.png"></canvas>
+                            </div>
+                            <div class="proj-slide-info">
+                                <span class="proj-count">05 / 11</span>
+                                <h3 class="proj-slide-title">CENTAG</h3>
+                                <p class="proj-slide-desc">QR-based attendance platform funded by Centene Corp. 200+ users, 3,000+ API calls in 2 days with zero errors, then adopted enterprise-wide.</p>
+                                <a href="#project/centag" class="proj-read-more">READ MORE</a>
+                            </div>
+                        </article>
+
+                        <article class="proj-slide">
+                            <div class="proj-slide-media">
+                                <canvas class="proj-slide-img project-canvas" data-src="assets/images/projects/cenmap.jpg"></canvas>
+                            </div>
+                            <div class="proj-slide-info">
+                                <span class="proj-count">06 / 11</span>
+                                <h3 class="proj-slide-title">CENMAP</h3>
+                                <p class="proj-slide-desc">Resource management application used by 480+ Product Owners and Executive Leadership at Centene Corporation.</p>
+                                <a href="#project/cenmap" class="proj-read-more">READ MORE</a>
+                            </div>
+                        </article>
+
+                        <article class="proj-slide">
+                            <div class="proj-slide-media">
+                                <canvas class="proj-slide-img project-canvas" data-src="assets/images/projects/thewardyfoundation.jpg"></canvas>
+                            </div>
+                            <div class="proj-slide-info">
+                                <span class="proj-count">07 / 11</span>
+                                <h3 class="proj-slide-title">THE WARDY FOUNDATION</h3>
+                                <p class="proj-slide-desc">501(c)(3) nonprofit bringing STEM education access across the Carolinas, bridging the gap in underserved communities.</p>
+                                <a href="#project/wardy-foundation" class="proj-read-more">READ MORE</a>
+                            </div>
+                        </article>
+
+                        <article class="proj-slide">
+                            <div class="proj-slide-media">
+                                <canvas class="proj-slide-img project-canvas" data-src="assets/images/projects/electron.jpeg"></canvas>
+                            </div>
+                            <div class="proj-slide-info">
+                                <span class="proj-count">08 / 11</span>
+                                <h3 class="proj-slide-title">ELECTRONICS EDUCATION</h3>
+                                <p class="proj-slide-desc">First-of-its-kind electronics education initiative at UofSC, launched with a 35+ student workshop and over $7,000 in equipment.</p>
+                                <a href="#project/electronics-education" class="proj-read-more">READ MORE</a>
+                            </div>
+                        </article>
+
+                        <article class="proj-slide">
+                            <div class="proj-slide-media">
+                                <canvas class="proj-slide-img project-canvas" data-src="assets/images/projects/window.jpg"></canvas>
+                            </div>
+                            <div class="proj-slide-info">
+                                <span class="proj-count">09 / 11</span>
+                                <h3 class="proj-slide-title">THE WINDOW PROJECT</h3>
+                                <p class="proj-slide-desc">Computer vision system measuring foot traffic and engagement outside the lab to generate actionable impression and marketing data.</p>
+                                <a href="#project/window-project" class="proj-read-more">READ MORE</a>
+                            </div>
+                        </article>
+
+                        <article class="proj-slide">
+                            <div class="proj-slide-media">
+                                <canvas class="proj-slide-img project-canvas" data-src="assets/images/projects/ProjectFirstPitch.png"></canvas>
+                            </div>
+                            <div class="proj-slide-info">
+                                <span class="proj-count">10 / 11</span>
+                                <h3 class="proj-slide-title">PROJECT FIRST PITCH</h3>
+                                <p class="proj-slide-desc">High-pressure launch system integrating Boston Dynamics Spot, ESP32 microcontrollers, and a custom air cannon for a live ceremonial first pitch.</p>
+                                <a href="#project/first-pitch" class="proj-read-more">READ MORE</a>
+                            </div>
+                        </article>
+
+                        <article class="proj-slide">
+                            <div class="proj-slide-media">
+                                <canvas class="proj-slide-img project-canvas" data-src="assets/images/projects/caelus.png"></canvas>
+                            </div>
+                            <div class="proj-slide-info">
+                                <span class="proj-count">11 / 11</span>
+                                <h3 class="proj-slide-title">CAELUS</h3>
+                                <p class="proj-slide-desc">Low-cost end-to-end autonomous drone system. University-funded, multi-team initiative spanning avionics, software, and mechanical design.</p>
+                                <a href="#project/caelus" class="proj-read-more">READ MORE</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="proj-scroll-rail" aria-hidden="true">
+                    <div class="proj-scroll-thumb" id="proj-scroll-thumb"></div>
+                </div>
+
+                <button class="proj-arrow proj-arrow--next" aria-label="Next project">&#9660;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-box">
+                <div class="content-wrapper">
+                    <h2 class="section-title">EXPERIENCE</h2>
+                    <div class="experience-timeline">
+                        <div class="role-progression">
+                            <!-- BANK OF AMERICA -->
+                            <div class="role-step current company-start">
+                                <div class="company-label"><img class="company-logo company-logo--invert" src="assets/images/icons/bofa.png" alt="">BANK OF AMERICA</div>
+                                <div class="role-info">
+                                    <h4 class="role-title">SOFTWARE ENGINEER INTERN</h4>
+                                    <div class="role-duration">MAY 2026 - PRESENT</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>INCOMING SOFTWARE ENGINEER INTERN AT BANK OF AMERICA FOR THE SUMMER OF 2026</li>
+                                </ul>
+                            </div>
+
+                            <div class="timeline-fork">
+                            <!-- UOFSC CENTER FOR INDUSTRY SOLUTIONS -->
+                            <div class="role-step current company-start">
+                                <div class="company-label"><img class="company-logo company-logo--invert-light" src="assets/images/icons/gamesc.webp" alt="">UOFSC CENTER FOR INDUSTRY SOLUTIONS</div>
+                                <div class="role-info">
+                                    <h4 class="role-title">PROJECT LEAD ENGINEER</h4>
+                                    <div class="role-duration">JAN 2026 - JUN 2026</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>LEAD ENGINEER FOR PROJECT CAELUS, A UNIVERSITY-FUNDED AUTONOMOUS DRONE INITIATIVE, RESPONSIBLE FOR OVERALL SYSTEM DEVELOPMENT</li>
+                                    <li>MANAGED MULTIDISCIPLINARY ENGINEERING TEAMS ACROSS AVIONICS, SOFTWARE, AND MECHANICAL DESIGN</li>
+                                    <li>DROVE PROCUREMENT AND SUPPLIER ENGAGEMENT INITIATIVES TO SUPPORT DOMESTIC SOURCING OF CRITICAL DRONE SYSTEM COMPONENTS</li>
+                                </ul>
+                            </div>
+
+                            <div class="role-step current">
+                                <div class="role-info">
+                                    <h4 class="role-title">RESEARCH FELLOW</h4>
+                                    <div class="role-duration">NOV 2025 - DEC 2025</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>RESEARCH FOCUS IN SYSTEM INTEGRATION USING STM32 MICROCONTROLLERS, EMBEDDED SYSTEMS, AND CONNECTED IOT DEVICES</li>
+                                    <li>RESEARCH FOCUS IN FLIGHT CONTROLLER SYSTEMS PCB DESIGNS AND INTEGRATION WITH NVIDIA JETSON ORIN NANO</li>
+                                    <li>OPERATOR, PROGRAMMER AND TECHNICIAN OF UNIVERSITY OF SOUTH CAROLINA'S TWIN YASKAWA MOTOMAN HC10DTP ROBOTIC ARMS</li>
+                                </ul>
+                            </div>
+                            </div><!-- /.timeline-fork -->
+
+                            <!-- CENTENE CORPORATION -->
+                            <div class="role-step current company-start">
+                                <div class="company-label"><img class="company-logo company-logo--invert" src="assets/images/icons/centene.png" alt="">CENTENE CORPORATION</div>
+                                <div class="role-info">
+                                    <h4 class="role-title">SYSTEMS ENGINEER INTERN</h4>
+                                    <div class="role-duration">AUG 2025 - JUN 2026</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>SUPPORTED THE SYSTEM ARCHITECTURE TEAM IN OVERSEEING IT, HR, FINANCE, AND OPERATIONS APPLICATIONS ACROSS THE ENTERPRISE</li>
+                                    <li>OPTIMIZED RESOURCE MANAGEMENT AND DEVELOPED SOLUTIONS IMPROVING EFFICIENCY IN SYSTEMS SERVING 28M+ MEMBERS</li>
+                                    <li>LED THE DEVELOPMENT OF CENMAP, A RESOURCE MANAGEMENT APPLICATION USED BY 480+ PRODUCT OWNERS AND EXECUTIVE LEADERSHIP</li>
+                                </ul>
+                            </div>
+
+                            <div class="role-step current">
+                                <div class="role-info">
+                                    <h4 class="role-title">INTERN TEAM LEAD APPLICATION DEVELOPER</h4>
+                                    <div class="role-duration">APR 2025 - AUG 2025</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>DELIVERED OASIS SHIELD, AN OAUTH 2.0 / JWT SERVICE UNIFYING AUTHENTICATION FOR MAIL OPERATIONS MICROSERVICES</li>
+                                    <li>BUILT AN S3 DOCUMENT API WITH AWS S3 MULTIPART UPLOADS, LAMBDA, DYNAMODB, AND STEP FUNCTIONS FOR SECURE PHI FILE UPLOADS</li>
+                                    <li>PARTNERED WITH RADIANT LOGIC AND AXWAY TO MODERNIZE IDENTITY AND DATA WORKFLOWS IN THE OASIS PLATFORM</li>
+                                    <li>LED 5 INTERNS, ARCHITECTED SOLUTIONS, AND SERVED AS POC FOR LEADERSHIP, RUNNING AGILE STANDUPS AND PRESENTING ROADMAPS</li>
+                                </ul>
+                            </div>
+
+                            <div class="role-step current">
+                                <div class="role-info">
+                                    <h4 class="role-title">SITE RELIABILITY ENGINEER INTERN</h4>
+                                    <div class="role-duration">MAY 2024 - APR 2025</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>AUTOMATED SRE WORKFLOWS IN JIRA, SERVICENOW, AND GITLAB USING PYTHON (SELENIUM, SMTPLIB, REST APIS) TO REDUCE TOIL AND IMPROVE OBSERVABILITY</li>
+                                    <li>WORKED WITH GITLAB PIPELINES AND THE BLUE-GREEN DEPLOYMENT CYCLE, SHADOWING PRODUCTION DEPLOYMENTS AND ON-CALL RESPONSES</li>
+                                    <li>SUPPORTED VMWARE TO AWS MIGRATION FOR AN APPEALS & GRIEVANCES APPLICATION, WRITING CLOUDFORMATION TEMPLATES FOR EC2, LBS, AND LAMBDAS</li>
+                                    <li>DEVELOPMENT WITH AI/ML TOOLS INCLUDING AWS SAGEMAKER AND GOOGLE T5 NLP TO AUTOMATE VULNERABILITY REMEDIATION INSTRUCTIONS</li>
+                                </ul>
+                            </div>
+
+                            <!-- DISCOUNT TIRE -->
+                            <div class="role-step current company-start">
+                                <div class="company-label"><img class="company-logo company-logo--invert" src="assets/images/icons/discount.png" alt="">DISCOUNT TIRE</div>
+                                <div class="role-info">
+                                    <h4 class="role-title">SERVICE COORDINATOR</h4>
+                                    <div class="role-duration">MAR 2023 - FEB 2024</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>COORDINATED SERVICE OPERATIONS AND MANAGED CUSTOMER WORKFLOW ACROSS A HIGH-VOLUME AUTOMOTIVE RETAIL ENVIRONMENT</li>
+                                    <li>ENSURED QUALITY STANDARDS AND TEAM PERFORMANCE THROUGH HANDS-ON LEADERSHIP AND SCHEDULING</li>
+                                </ul>
+                            </div>
+
+                            <div class="role-step current">
+                                <div class="role-info">
+                                    <h4 class="role-title">CREW CHIEF</h4>
+                                    <div class="role-duration">JAN 2023 - JUN 2023</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>LED SHOP CREW IN DAY-TO-DAY OPERATIONS, OVERSEEING TIRE INSTALLATION, ROTATION, AND BALANCING WORKFLOWS</li>
+                                    <li>TRAINED AND GUIDED NEW TEAM MEMBERS ON SAFETY PROCEDURES AND SERVICE STANDARDS</li>
+                                </ul>
+                            </div>
+
+                            <div class="role-step current">
+                                <div class="role-info">
+                                    <h4 class="role-title">TECHNICIAN</h4>
+                                    <div class="role-duration">NOV 2022 - JAN 2023</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>PERFORMED TIRE INSTALLATION, ROTATION, BALANCING, AND REPAIR SERVICES TO MANUFACTURER SPECIFICATIONS</li>
+                                </ul>
+                            </div>
+
+                            <!-- CALIBER COLLISION -->
+                            <div class="role-step current company-start">
+                                <div class="company-label"><img class="company-logo company-logo--invert" src="assets/images/icons/caliber.png" alt="">CALIBER COLLISION</div>
+                                <div class="role-info">
+                                    <h4 class="role-title">PARTS MANAGER</h4>
+                                    <div class="role-duration">OCT 2021 - SEP 2022</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>MANAGED 1,500 INVOICES AMOUNTING TO $500,000 PER MONTH AND MAINTAINED VENDOR RELATIONSHIPS ACROSS 26 SUPPLIERS</li>
+                                    <li>OVERSAW RETURNS AND NEGOTIATIONS TO EXPEDITE PARTS, SECURE EXCEPTIONS ON LATE RETURNS, AND RESOLVE SUPPLY CHAIN ISSUES</li>
+                                    <li>SELF-TAUGHT PYTHON AND BUILT AUTOMATED WORKFLOWS THAT WERE ADOPTED ACROSS MULTIPLE SHOPS TO IMPROVE EFFICIENCY AND ACCURACY</li>
+                                </ul>
+                            </div>
+
+                            <div class="role-step current">
+                                <div class="role-info">
+                                    <h4 class="role-title">SHOP HELPER</h4>
+                                    <div class="role-duration">SEP 2021</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>SUPPORTED COLLISION REPAIR SHOP OPERATIONS THROUGH PARTS ORGANIZATION AND GENERAL SHOP ASSISTANCE</li>
+                                </ul>
+                            </div>
+
+                            <!-- MOD PIZZA -->
+                            <div class="role-step current company-start">
+                                <div class="company-label"><img class="company-logo company-logo--invert" src="assets/images/icons/mod.png" alt="">MOD PIZZA</div>
+                                <div class="role-info">
+                                    <h4 class="role-title">ASSISTANT MANAGER</h4>
+                                    <div class="role-duration">MAR 2021 - SEP 2021</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>ASSISTED IN MANAGING DAILY STORE OPERATIONS, TEAM SCHEDULING, AND CUSTOMER EXPERIENCE IN A FAST-PACED ENVIRONMENT</li>
+                                    <li>SUPPORTED HIRING, ONBOARDING, AND PERFORMANCE COACHING FOR FRONT-LINE STAFF</li>
+                                </ul>
+                            </div>
+
+                            <div class="role-step current">
+                                <div class="role-info">
+                                    <h4 class="role-title">TRAINER</h4>
+                                    <div class="role-duration">DEC 2020 - FEB 2021</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>TRAINED NEW TEAM MEMBERS ON STORE PROCEDURES, FOOD SAFETY, AND CUSTOMER SERVICE STANDARDS</li>
+                                </ul>
+                            </div>
+
+                            <div class="role-step current">
+                                <div class="role-info">
+                                    <h4 class="role-title">TEAM MEMBER</h4>
+                                    <div class="role-duration">MAY 2020 - NOV 2020</div>
+                                </div>
+                                <ul class="role-duties">
+                                    <li>DELIVERED HIGH-QUALITY CUSTOMER SERVICE AND MAINTAINED FOOD PREPARATION AND CLEANLINESS STANDARDS</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-content">
+                <div class="degree">
+                    <h3 class="school">
+                        <img src="assets/images/icons/gamesc.webp" alt="University of South Carolina" class="school-logo">
+                        University Of South Carolina
+                    </h3>
+                    <div class="degree-info">
+                        <span class="degree-title">Bachelor of Computer Engineering</span>
+                        <span class="duration">2023-2027</span>
+                    </div>
+                    <p class="gpa">Cumulative GPA: 3.6/4.0</p>
+                    <div class="activities-section">
+                        <strong class="activities-label">Activities</strong>
+                        <div class="activities-logos">
+                            <img src="assets/images/icons/ktp.png" alt="Kappa Theta Pi" class="activity-logo activity-logo--invert" title="Kappa Theta Pi (ΚΘΠ)">
+                            <span class="activity-logo-text" title="ACM">ACM</span>
+                            <img src="assets/images/icons/vex.jpg" alt="VEX Robotics" class="activity-logo activity-logo--invert" title="VEX Robotics">
+                            <img src="assets/images/icons/c4is.jpeg" alt="Center For Industry Solutions" class="activity-logo activity-logo--invert-dark" title="Center For Industry Solutions">
+                        </div>
+                    </div>
+                    <p class="coursework">
+                        <strong>Relevant Coursework:</strong> Algorithmic Design I & II (Java), Unix/Linux, Computer Security, Computer Networks, Computer Architecture (Assembly), Advanced Programming (C++), Robotics, Advanced Digital Logic, Embedded Systems, Operating Systems, Discrete Structures, Circuits, Signals & Systems
+                    </p>
+                </div>
+            </div>
+            
+            <div class="section-divider"></div>
+            
+            <div class="achievements">
+                <h3 class="achievements-title">Awards & Recognition</h3>
+                <ul class="awards-list">
+                    <li>2026 CEE Vulnerability Discovery</li>
+                    <li>2025 Centene Intern Spotlight</li>
+                    <li>2025 USC Engineering Intern Spotlight</li>
+                    <li>2025 HackUNCP Hackathon Winner</li>
+                    <li>2024 Centene Gen Z Representative Panelist</li>
+                    <li>2023 Charlotte Marathon</li>
+                    <li>2018–2019 South Carolina Wrestling State Champion</li>
+                </ul>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="volunteering">
+                <h3 class="volunteering-title">Volunteering</h3>
+                <ul class="volunteer-list">
+                    <li>Centene Foundation <span class="volunteer-duration">2024-2026</span></li>
+                    <li>Wardy Foundation <span class="volunteer-duration">2025-Present</span></li>
+                    <li>Elon Park Elementary School STEM Volunteer <span class="volunteer-duration">Aug 2021-Present</span></li>
+                    <li>CHMS Mentor For Middle School Students <span class="volunteer-duration">May 2021-Present</span></li>
+                    <li>South Carolina Council for Economic Education <span class="volunteer-duration">Jan 2026-May 2026</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 Nathan Wardy. All rights reserved.</p>
+                <img src="assets/images/favicon/logolight.png" alt="Nathan Wardy" id="footer-logo" class="footer-logo">
+            </div>
+        </footer>
+
+    </section>
+
+    </div><!-- /#main-content -->
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/scramble-text.js"></script>
+    <script src="js/router.js"></script>
+</body>
+</html> 

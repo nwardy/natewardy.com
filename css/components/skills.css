@@ -1,0 +1,218 @@
+/* Technical Skills Section */
+.technical {
+  padding: 0;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.technical .section-box {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(20px, 3vh, 34px) var(--spacing-xl);
+}
+
+.technical .content-wrapper {
+  max-width: 100%;
+}
+
+/* ── Header row: title + edit controls ─────────────────────────────────────── */
+.skills-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: clamp(14px, 2.2vh, 24px);
+}
+
+.skills-header .section-title {
+  margin-bottom: 0;
+  text-align: left;
+  flex: 1;
+  font-size: clamp(18px, 2.2vh, 24px);
+}
+
+.skills-header .section-title::after {
+  margin-left: 0;
+  margin-top: 10px;
+}
+
+.skills-edit-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.skills-btn {
+  font-size: 10px;
+  font-weight: var(--font-weight-light);
+  color: var(--color-black);
+  text-transform: uppercase;
+  letter-spacing: 0em;
+  padding: var(--spacing-xs) 4px;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  background: transparent;
+  cursor: pointer;
+}
+
+.skills-btn:hover,
+.skills-btn:focus {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+/* hidden until needed */
+#skills-apply-btn,
+#skills-cancel-btn { display: none; }
+
+body.dark .skills-btn               { color: #ededed; }
+body.dark .skills-btn:hover,
+body.dark .skills-btn:focus         { background-color: #ededed; color: #000; border-color: #ededed; }
+
+/* ── Chart ──────────────────────────────────────────────────────────────────── */
+.skills-chart {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(24px, 4vw, 56px);
+  row-gap: clamp(14px, 2.2vh, 24px);
+}
+
+.skill-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-group-title {
+  font-size: clamp(9px, 1.25vh, 12px);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.12em;
+  color: var(--color-black);
+  opacity: 0.4;
+  margin: 0 0 clamp(7px, 1.2vh, 12px) 0;
+}
+
+.skill-bars {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5px, 1vh, 9px);
+}
+
+.skill-bar-row {
+  display: grid;
+  grid-template-columns: minmax(92px, 124px) 1fr;
+  align-items: center;
+  gap: clamp(8px, 1.4vw, 16px);
+}
+
+.skill-name {
+  font-size: clamp(8px, 1.2vh, 11px);
+  font-weight: var(--font-weight-light);
+  letter-spacing: 0.06em;
+  color: var(--color-black);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.skill-bar-track {
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.skill-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--color-black);
+}
+
+/* drag handle dot at tip of fill */
+.skill-bar-handle {
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 9px;
+  height: 9px;
+  background-color: var(--color-black);
+  border-radius: 50%;
+  display: none;
+}
+
+/* ── Edit mode ──────────────────────────────────────────────────────────────── */
+.skills-chart.edit-mode .skill-bar-track {
+  height: 4px;
+  cursor: ew-resize;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.skills-chart.edit-mode .skill-bar-fill {
+  height: 100%;
+}
+
+.skills-chart.edit-mode .skill-bar-handle {
+  display: block;
+}
+
+/* ── Dark mode ──────────────────────────────────────────────────────────────── */
+body.dark .skill-group-title        { color: #ededed; }
+body.dark .skill-name               { color: #ededed; }
+body.dark .skill-bar-track          { background-color: rgba(255,255,255,0.1); }
+body.dark .skill-bar-fill           { background-color: #ededed; }
+body.dark .skill-bar-handle         { background-color: #ededed; }
+body.dark .skills-chart.edit-mode .skill-bar-track { background-color: rgba(255,255,255,0.07); }
+
+/* ── Mobile ─────────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .technical {
+    padding: 0;
+  }
+
+  .technical .section-box {
+    width: calc(100% - 32px);
+    padding: 20px 16px;
+  }
+
+  .skills-header {
+    margin-bottom: 16px;
+  }
+
+  .skills-header .section-title {
+    font-size: 18px;
+  }
+
+  .skills-chart {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 14px;
+  }
+
+  .skill-group-title {
+    font-size: 9px;
+    margin-bottom: 7px;
+    white-space: normal;
+  }
+
+  .skill-bars {
+    gap: 7px;
+  }
+
+  .skill-bar-row {
+    grid-template-columns: minmax(0, 45%) 1fr;
+    gap: 8px;
+  }
+
+  .skill-name {
+    font-size: 10px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .skill-bar-track {
+    height: 2px;
+  }
+}

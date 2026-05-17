@@ -1,0 +1,417 @@
+/* Experience Section */
+.experience {
+  padding: 0;
+  background-color: var(--color-white);
+}
+
+
+
+.company-label {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-light);
+  color: var(--color-black);
+  margin: 0 0 var(--spacing-sm) 0;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--color-black);
+  padding-bottom: var(--spacing-xs);
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.company-logo {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  opacity: 0.85;
+  filter: grayscale(1);
+}
+
+body.dark .company-logo--invert {
+  filter: grayscale(1) invert(1);
+}
+
+.company-logo--invert-light {
+  filter: grayscale(1) invert(1);
+}
+
+body.dark .company-logo--invert-light {
+  filter: grayscale(1);
+}
+
+.role-step.company-start {
+  margin-top: var(--spacing-2xl);
+}
+
+.role-step.company-start:first-child {
+  margin-top: 0;
+}
+
+
+
+/* Continuous Timeline */
+.experience .section-box {
+  position: relative;
+}
+
+
+
+
+
+.role-progression {
+  position: relative;
+  margin-left: var(--spacing-lg);
+}
+
+.role-progression::before {
+  content: '';
+  position: absolute;
+  left: -13px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--color-black);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.role-step {
+  position: relative;
+  margin-bottom: var(--spacing-xl);
+  padding-left: var(--spacing-lg);
+}
+
+.role-step::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  border-radius: 50%;
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.role-step.current::before {
+  background-color: var(--color-black);
+  opacity: 1;
+}
+
+.role-step.company-start::before {
+  top: 44px;
+}
+
+.timeline-fork > .role-step.company-start::after {
+  top: 44px;
+}
+
+.role-step:last-child {
+  margin-bottom: var(--spacing-base);
+}
+
+.role-info {
+  margin-bottom: 0;
+}
+
+.role-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  margin: 0 0 var(--spacing-2xs) 0;
+  letter-spacing: 0.02em;
+  line-height: var(--line-height-tight);
+  color: var(--color-black);
+}
+
+.role-duration {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-light);
+  color: var(--color-black);
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.role-duties {
+  margin: var(--spacing-sm) 0 0 0;
+  padding-left: 0;
+}
+
+.role-duties li {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-black);
+  margin-bottom: var(--spacing-sm);
+  list-style: none;
+  font-weight: var(--font-weight-light);
+  letter-spacing: 0.02em;
+  opacity: 0.8;
+  padding-left: 1.5em;
+  position: relative;
+}
+
+.role-duties li::before {
+  content: '•';
+  color: var(--color-black);
+  font-size: var(--font-size-base);
+  opacity: 0.6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5em;
+  text-align: left;
+}
+
+.role-duties li:last-child {
+  margin-bottom: 0;
+}
+
+/* Concurrent employment fork — bracket to the left of the main timeline line */
+.timeline-fork {
+  position: relative;
+  margin-top: var(--spacing-2xl);
+}
+
+/* Suppress the first-child top-margin since the fork wrapper itself provides spacing */
+.timeline-fork > .role-step.company-start:first-child {
+  margin-top: 0;
+}
+
+/* PCB-style 45° trace: top horizontal → 45° bend → vertical → 45° bend → bottom horizontal.
+   Right edge lands on the main timeline line at left: -13px (offset + width = -33 + 20). */
+.timeline-fork::before {
+  content: '';
+  position: absolute;
+  left: -33px;
+  top: calc(-1 * var(--fork-top-offset, 0px));
+  bottom: 0;
+  width: 20px;
+  pointer-events: none;
+  opacity: 0.3;
+  background:
+    /* top horizontal connector (x: 8→20, y: 0) */
+    linear-gradient(var(--color-black), var(--color-black))
+      8px 0 / 12px 1px no-repeat,
+    /* top 45° bend: (8,0)→(0,8) */
+    linear-gradient(to bottom right,
+      transparent 47%, var(--color-black) 47%,
+      var(--color-black) 53%, transparent 53%)
+      0 0 / 8px 8px no-repeat,
+    /* left vertical branch line (x: 0, y: 8→H-8) */
+    linear-gradient(var(--color-black), var(--color-black))
+      0 8px / 1px calc(100% - 16px) no-repeat,
+    /* bottom 45° bend: (0,H-8)→(8,H) */
+    linear-gradient(to bottom left,
+      transparent 47%, var(--color-black) 47%,
+      var(--color-black) 53%, transparent 53%)
+      0 100% / 8px 8px no-repeat,
+    /* bottom horizontal connector (x: 8→20, y: H) */
+    linear-gradient(var(--color-black), var(--color-black))
+      8px 100% / 12px 1px no-repeat;
+}
+
+/* Remove the main-line dots for role-steps inside the fork */
+.timeline-fork > .role-step::before {
+  display: none;
+}
+
+/* Mirror dots on the branch line for each role inside the fork.
+   Branch border-left is at left: -33px → center a 6px dot: -33 - 3 + 0.5 ≈ -36px */
+.timeline-fork > .role-step::after {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-black);
+  border: 1px solid var(--color-black);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Mobile Experience */
+@media (max-width: 768px) {
+  .experience {
+    padding: var(--spacing-5xl) 0; /* Added explicit padding for consistency */
+  }
+  
+  .company-label {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg); /* Increased spacing after company labels */
+  }
+  
+  .role-progression {
+    margin-left: var(--spacing-xs);
+  }
+  
+  .role-progression::before {
+    left: -11px;
+  }
+
+  /* main line at -11px → right edge at -11px → left: -27px; width: 16px */
+  .timeline-fork::before {
+    left: -27px;
+    width: 16px;
+    background:
+      linear-gradient(var(--color-black), var(--color-black))
+        6px 0 / 10px 1px no-repeat,
+      linear-gradient(to bottom right,
+        transparent 47%, var(--color-black) 47%,
+        var(--color-black) 53%, transparent 53%)
+        0 0 / 6px 6px no-repeat,
+      linear-gradient(var(--color-black), var(--color-black))
+        0 6px / 1px calc(100% - 12px) no-repeat,
+      linear-gradient(to bottom left,
+        transparent 47%, var(--color-black) 47%,
+        var(--color-black) 53%, transparent 53%)
+        0 100% / 6px 6px no-repeat,
+      linear-gradient(var(--color-black), var(--color-black))
+        6px 100% / 10px 1px no-repeat;
+  }
+
+  /* branch at -27px → dot center: -27 - 3 + 0.5 ≈ -30px */
+  .timeline-fork > .role-step::after {
+    left: -30px;
+  }
+
+  .role-step {
+    padding-left: var(--spacing-xs);
+    margin-bottom: var(--spacing-xl); /* Increased from base to xl for better separation */
+  }
+  
+  .role-step::before {
+    left: -13px;
+    top: 6px;
+    width: 6px;
+    height: 6px;
+  }
+
+  .role-step.company-start::before {
+    top: 54px;
+  }
+
+  .timeline-fork > .role-step.company-start::after {
+    top: 54px;
+  }
+  
+  .role-title {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-sm); /* Added margin for better spacing */
+  }
+  
+  .role-duration {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-sm); /* Added margin for better spacing */
+  }
+  
+  .role-duties {
+    margin-top: var(--spacing-sm); /* Increased spacing before duties */
+  }
+  
+  .role-duties li {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-sm); /* Increased from xs to sm */
+    padding-left: 1.2em;
+  }
+  
+  .role-duties li::before {
+    width: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience {
+    padding: var(--spacing-6xl) 0; /* Added explicit padding for consistency */
+  }
+  
+  .company-label {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-xl); /* Increased spacing after company labels */
+  }
+
+  .role-progression {
+    margin-left: var(--spacing-2xs);
+  }
+  
+  .role-progression::before {
+    left: -7px;
+  }
+
+  /* main line at -7px → left: -19px; width: 12px */
+  .timeline-fork::before {
+    left: -19px;
+    width: 12px;
+    background:
+      linear-gradient(var(--color-black), var(--color-black))
+        5px 0 / 7px 1px no-repeat,
+      linear-gradient(to bottom right,
+        transparent 47%, var(--color-black) 47%,
+        var(--color-black) 53%, transparent 53%)
+        0 0 / 5px 5px no-repeat,
+      linear-gradient(var(--color-black), var(--color-black))
+        0 5px / 1px calc(100% - 10px) no-repeat,
+      linear-gradient(to bottom left,
+        transparent 47%, var(--color-black) 47%,
+        var(--color-black) 53%, transparent 53%)
+        0 100% / 5px 5px no-repeat,
+      linear-gradient(var(--color-black), var(--color-black))
+        5px 100% / 7px 1px no-repeat;
+  }
+
+  /* branch at -19px → dot center: -19 - 2.5 + 0.5 ≈ -21px (5px dot at 480px) */
+  .timeline-fork > .role-step::after {
+    left: -21px;
+    width: 5px;
+    height: 5px;
+  }
+
+  .role-step {
+    padding-left: var(--spacing-sm);
+    margin-bottom: var(--spacing-2xl); /* Increased from base to 2xl for much better separation */
+  }
+  
+  .role-step::before {
+    left: -9px;
+    width: 5px;
+    height: 5px;
+  }
+  
+  .role-duties {
+    margin-top: var(--spacing-sm); /* Increased from 2xs to sm */
+  }
+  
+  .role-duties li {
+    padding-left: 1em;
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-sm); /* Increased spacing between duties */
+    line-height: 1.7; /* Improved line height */
+  }
+  
+  .role-duties li::before {
+    width: 1em;
+  }
+  
+  .role-title {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-sm); /* Added margin for better spacing */
+  }
+  
+  .role-duration {
+    font-size: 10px;
+    margin-bottom: var(--spacing-sm); /* Added margin for better spacing */
+  }
+
+  .role-step.company-start::before {
+    top: 58px;
+  }
+
+  .timeline-fork > .role-step.company-start::after {
+    top: 58px;
+  }
+}

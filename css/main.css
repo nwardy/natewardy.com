@@ -1,0 +1,350 @@
+/* Nathan Wardy Resume Website - Main CSS File */
+
+/* Base Styles - Load First */
+@import 'base/variables.css';
+@import 'base/reset.css';
+@import 'base/typography.css';
+
+/* Component Styles */
+@import 'components/header.css';
+@import 'components/hero.css';
+@import 'components/about.css';
+@import 'components/skills.css';
+@import 'components/projects.css';
+@import 'components/experience.css';
+@import 'components/education.css';
+@import 'components/project-page.css';
+
+@import 'components/footer.css';
+
+/* Global Layout Utilities - Edge to edge modern design */
+.container {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.content-wrapper {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 0 var(--spacing-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .content-wrapper {
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+/* ── Full-screen slide system ──────────────────────────────────────────────── */
+/* body no longer scrolls — each section is a fixed slide */
+body {
+  overflow: hidden;
+}
+
+section {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; /* iOS momentum scroll */
+  overscroll-behavior: contain;      /* prevent scroll chaining to body */
+  background-color: var(--color-white); /* prevent seeing slides behind */
+  will-change: transform;
+  transform: translateY(110vh);
+  z-index: 1;
+  padding: var(--spacing-4xl) 0;
+  margin: 0; /* cancel any component-level margins (e.g. hero's margin-top: 80px) */
+}
+
+/* Hero is visible before JS runs */
+#hero-section {
+  transform: translateY(0);
+}
+
+/* JS adds this class after the initial silent positioning */
+section.slide-transitioning {
+  transition: transform 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Internal section dividers */
+.section-divider {
+  width: 100vw;
+  height: 2px;
+  background-color: var(--color-primary-bg);
+  margin: var(--spacing-2xl) 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.section-box {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
+  margin: 0 var(--spacing-lg);
+  padding: var(--spacing-4xl) var(--spacing-xl);
+}
+
+/* Remove borders for specific sections */
+.about .section-box,
+.technical .section-box,
+.experience .section-box {
+  border: none;
+}
+
+/* Shrink experience section box */
+.experience .section-box {
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  margin: 0 var(--spacing-2xl);
+}
+
+/* ── Slide centering ─────────────────────────────────────────────────────── */
+.hero,
+.technical,
+.projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    justify-content: flex-start;
+  }
+}
+
+
+
+/* Smooth scroll offset for fixed header */
+section[id] {
+  scroll-margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: var(--spacing-5xl) 0; /* Increased from 4xl to 5xl */
+  }
+  
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+  
+  .section-box {
+    margin: 0 var(--spacing-base);
+    background-color: var(--color-white);
+    padding: var(--spacing-3xl) var(--spacing-lg); /* Increased vertical padding */
+  }
+  
+  body, section {
+    background-color: var(--color-white);
+  }
+
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: var(--spacing-6xl) 0; /* Increased from 4xl to 6xl for more breathing room */
+  }
+  
+  section[id] {
+    scroll-margin-top: 70px;
+  }
+  
+  .section-box {
+    margin: 0 var(--spacing-xs);
+    background-color: var(--color-white);
+    padding: var(--spacing-4xl) var(--spacing-base); /* Increased vertical padding significantly */
+  }
+  
+  body, section {
+    background-color: var(--color-white);
+  }
+
+}
+
+/* ── Dark mode easter egg (toggled by clicking logo) ──────────────────────── */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.dark {
+  --color-white:          #000000;
+  --color-black:          #ededed;
+  --color-primary-bg:     #000000;
+  --color-secondary-bg:   #111111;
+  --color-tertiary-bg:    #1a1a1a;
+  --color-text-primary:   #e0e0e0;
+  --color-text-secondary: #b0b0b0;
+  --color-text-light:     #808080;
+  --color-text-muted:     #555555;
+  --color-hover-bg:       #141414;
+  --color-border:         #ededed;
+  --color-border-light:   #444444;
+  --color-accent:         #ededed;
+  --color-accent-light:   #bbbbbb;
+  background-color: #000000;
+  color: #ededed;
+}
+
+body.dark .section-box,
+body.dark .hero-box,
+body.dark .header,
+body.dark #project-page {
+  background-color: #000000;
+  transition: background-color 0.4s ease;
+}
+
+/* Section gets the color but NOT a transition override — keeps the transform
+   transition from .slide-transitioning intact so the carousel never locks up */
+body.dark section {
+  background-color: #000000;
+}
+
+body.dark .skill-bar-track {
+  background-color: #222;
+}
+
+body.dark .project-canvas,
+body.dark .hero-canvas,
+body.dark .pp-canvas {
+  filter: grayscale(1);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Focus styles for better accessibility */
+.nav-links a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Performance optimization for modern design */
+* {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Header must sit above all slides */
+.header {
+  z-index: 500;
+}
+
+/* ── Slide navigation dots ────────────────────────────────────────────────── */
+.slide-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  z-index: 200;
+}
+
+.slide-dot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.4);
+  background: transparent;
+  transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.slide-dot.active {
+  background: var(--color-black);
+  border-color: var(--color-black);
+  transform: scale(1.5);
+}
+
+.slide-dot:hover:not(.active) {
+  background: rgba(0, 0, 0, 0.25);
+  border-color: rgba(0, 0, 0, 0.6);
+}
+
+body.dark .slide-dot {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark .slide-dot.active {
+  background: var(--color-black);
+  border-color: var(--color-black);
+}
+
+body.dark .slide-dot:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .slide-nav {
+    display: none;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .nav-links a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .header,
+  .footer {
+    display: none;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black;
+    background: white;
+  }
+  
+  .hero {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
+  section {
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+  
+  .project,
+  .job {
+    page-break-inside: avoid;
+  }
+} 

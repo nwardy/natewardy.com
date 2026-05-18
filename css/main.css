@@ -14,6 +14,7 @@
 @import 'components/experience.css';
 @import 'components/education.css';
 @import 'components/project-page.css';
+@import 'components/stories-page.css';
 
 @import 'components/footer.css';
 
@@ -201,9 +202,20 @@ body.dark {
 body.dark .section-box,
 body.dark .hero-box,
 body.dark .header,
-body.dark #project-page {
+body.dark #project-page,
+body.dark #stories-page {
   background-color: #000000;
   transition: background-color 0.4s ease;
+}
+
+body.dark .sp-card {
+  background: rgba(255, 255, 255, 0.025);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+body.dark .sp-card:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* Section gets the color but NOT a transition override — keeps the transform

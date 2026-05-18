@@ -51,13 +51,33 @@
 }
 
 .pp-image-col {
-  flex: 0 0 220px;
+  flex: 0 0 440px;
 }
 
 .pp-canvas {
   display: block;
-  width: 220px;
+  width: 440px;
   filter: grayscale(1);
+}
+
+/* Stacked layout: image below title (vulnerability-remediation, rec-*) */
+.pp-body--stacked {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pp-body--stacked .pp-image-col {
+  flex: none;
+  width: 100%;
+}
+
+.pp-body--stacked .pp-canvas {
+  width: 100%;
+}
+
+/* Beside layout: meta sits flush under title, no extra bottom gap inside col */
+.pp-title-col .pp-meta {
+  margin-bottom: 0;
 }
 
 .pp-title-col {
@@ -216,12 +236,20 @@
     margin-bottom: var(--spacing-xl);
   }
 
+  .pp-body--stacked {
+    margin-bottom: var(--spacing-xl);
+  }
+
   .pp-image-col {
     flex: none;
     width: 100%;
   }
 
   .pp-canvas {
+    width: 100%;
+  }
+
+  .pp-title-col {
     width: 100%;
   }
 

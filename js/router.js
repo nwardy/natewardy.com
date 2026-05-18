@@ -1,3 +1,192 @@
+// ─── Stories data ─────────────────────────────────────────────────────────────
+// Each story has an `origin` that defines where it comes from.
+// origin: 'project' | 'recommendation' | 'photo' | 'linkedin'
+//
+// All entries:
+// { origin, date (YYYY-MM-DD, used for sort), label (display),
+//   body, image (optional),
+//   parentLink (href back to parent page), parentLabel (link text) }
+//
+// Recommendation-only extras: from, fromTitle
+// LinkedIn-only extras:        link (external URL)
+
+// Array order controls feed order — no automatic sort.
+// Top of array = top of feed (most recent). Bottom = oldest.
+var STORIES = [
+  {
+    origin: 'youtube',
+    label: 'JUN 2026',
+    image: 'assets/images/ad11.gif',
+    link: 'https://www.youtube.com/shorts/khsQ3AYuVvM',
+    linkLabel: 'WATCH ON YOUTUBE',
+  },
+  {
+    origin: 'instagram',
+    label: 'MAY 2026',
+    image: 'assets/images/storygcemar.png',
+    link: 'https://www.instagram.com/p/DXhXAeUDuzL/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+    linkLabel: 'VIEW ON INSTAGRAM',
+  },
+  {
+    origin: 'linkedin',
+    label: 'MAY 2026',
+    image: 'assets/images/may26story.png',
+    link: 'https://www.linkedin.com/posts/summer-internship-spotlight-nathan-wardy-share-7459960584998998017-NJ49/',
+    linkLabel: 'VIEW ON LINKEDIN',
+  },
+  {
+    origin: 'recommendation',
+    label: 'MAY 2026',
+    body: '"Nathan consistently exceeded expectations in both technical execution and problem-solving... Beyond the technical delivery, Nathan demonstrated strong analytical thinking, initiative, and an ability to quickly understand complex operational and data management concepts. I would highly recommend Nathan."',
+    image: 'assets/images/reqJen.png',
+    parentLink: '#project/rec-jen',
+    parentLabel: 'VIEW RECOMMENDATION',
+    from: 'Jennifer Halverson',
+    fromTitle: 'Results-Driven Leader, Centene Corporation',
+  },
+  {
+    origin: 'project',
+    label: 'JUN 2026',
+    body: 'CenMap queries ServiceNow across tens of millions of records, maps the full organizational hierarchy using a graph theory algorithm I developed, and renders it as an interactive visualization now used by 480+ product owners and executive leadership. Think Google Maps for your organization.',
+    image: 'assets/images/projects/cenmap.jpg',
+    parentLink: '#project/cenmap',
+    parentLabel: 'VIEW PROJECT',
+  },
+  {
+    origin: 'project',
+    label: 'MAY 2026',
+    body: 'CAELUS went from a four-person team to fifteen over one semester, and crossed the finish line with a fully autonomous GPS-denied drone: NVIDIA Jetson Orin Nano, SpeedyBee F405, 2-DOF 360° LiDAR, and a closed-loop ground charging station. It started because someone said we couldn\'t do it.',
+    image: 'assets/images/projects/caelus.png',
+    parentLink: '#project/caelus',
+    parentLabel: 'VIEW PROJECT',
+  },
+  {
+    origin: 'project',
+    label: 'MAY 2026',
+    body: 'Built a pneumatically powered, electronically controlled baseball cannon mounted on Boston Dynamics Spot, wrote the physics documentation to get approval from the Columbia Fireflies and UofSC athletics, and delivered the first pitch live in front of a real audience. One attempt. It worked.',
+    image: 'assets/images/projects/ProjectFirstPitch.png',
+    parentLink: '#project/first-pitch',
+    parentLabel: 'VIEW PROJECT',
+  },
+  {
+    origin: 'linkedin',
+    label: 'APR 2026',
+    image: 'assets/images/apr26.png',
+    link: 'https://www.linkedin.com/posts/robots-and-baseball-absolutely-prior-ugcPost-7453479019112710144-7IJk/',
+    linkLabel: 'VIEW ON LINKEDIN',
+  },
+  {
+    origin: 'project',
+    label: 'APR 2026',
+    body: 'Behind the scenes of Project First Pitch.',
+    image: 'assets/images/carstory1.jpg',
+    parentLink: '#project/first-pitch',
+    parentLabel: 'VIEW PROJECT',
+  },
+  {
+    origin: 'linkedin',
+    label: 'MAR 2026',
+    image: 'assets/images/mar26lecturestory.png',
+    link: 'https://www.linkedin.com/posts/nathanwardy_today-sebastian-boscan-and-i-had-the-chance-ugcPost-7435133376375726080-jua3/',
+    linkLabel: 'VIEW ON LINKEDIN',
+  },
+  {
+    origin: 'article',
+    label: 'MAR 2026',
+    image: 'assets/images/mar26story.png',
+    link: 'https://research.cec.sc.edu/c4is/news/building-skills-ground-hands-soldering-workshop-c4is',
+    linkLabel: 'READ ARTICLE',
+  },
+  {
+    origin: 'instagram',
+    label: 'FEB 2026',
+    video: 'assets/images/ad12.mp4',
+    link: 'https://www.instagram.com/reel/DWRKVmAgLA1/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==',
+    linkLabel: 'VIEW ON INSTAGRAM',
+  },
+  {
+    origin: 'project',
+    label: 'JAN 2026',
+    body: 'Computer vision system pointed at the lab window that measures foot traffic and classifies active observers vs. passersby, generating a real impression-per-hour metric for the space. Find the places where data already exists and nobody is collecting it yet.',
+    image: 'assets/images/projects/window.jpg',
+    parentLink: '#project/window-project',
+    parentLabel: 'VIEW PROJECT',
+  },
+  {
+    origin: 'project',
+    label: 'AUG 2025',
+    body: 'Rebuilt Centene\'s on-premise Oasis mail platform in AWS: OAuth 2.0 / JWT identity service with Ping Federate, Axway, and Radiant Logic, plus a production S3 Document API handling secure PHI file ingestion at enterprise scale. Led a team of four interns through the whole thing.',
+    image: 'assets/images/projects/oasisSheild.png',
+    parentLink: '#project/oasis-shield',
+    parentLabel: 'VIEW PROJECT',
+  },
+  {
+    origin: 'project',
+    label: 'AUG 2025',
+    body: 'CenTag shipped at the 2025 Centene Intern Summit. 200 interns, 3D printed QR keychains, a fully serverless AWS checkpoint app, and zero Excel sheets. Five additional teams requested it for their own events after the summit.',
+    image: 'assets/images/projects/centag2.png',
+    parentLink: '#project/centag',
+    parentLabel: 'VIEW PROJECT',
+  },
+  {
+    origin: 'linkedin',
+    label: 'MAY 2025',
+    image: 'assets/images/may25story.png',
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7333535923252379648/',
+    linkLabel: 'VIEW ON LINKEDIN',
+  },
+  {
+    origin: 'project',
+    label: 'MAR 2025',
+    body: '35 students, 24 hours to source $7,000 in equipment across four department chairs, and every single attendee was a mechanical, civil, or chemical engineering major who had never soldered before. They all left with a working device. Got emails after saying it opened up career directions they didn\'t know existed.',
+    image: 'assets/images/projects/electron.jpeg',
+    parentLink: '#project/electronics-education',
+    parentLabel: 'VIEW PROJECT',
+  },
+  {
+    origin: 'project',
+    label: 'JAN 2025',
+    body: 'A 501(c)(3) nonprofit bringing STEM education to underserved communities across the Carolinas. Not about building something huge. About making the most impact we can with what we have, for kids who are exactly where I was.',
+    image: 'assets/images/projects/thewardyfoundation.jpg',
+    parentLink: '#project/wardy-foundation',
+    parentLabel: 'VIEW PROJECT',
+  },
+  {
+    origin: 'project',
+    label: 'AUG 2024',
+    body: 'Presented the vulnerability remediation pipeline to 200 company leaders at a Centene intersection call. The system ingests ServiceNow scans, checks Jira for existing tickets, creates or updates them automatically, and uses Google T5 NLP to write the descriptions. Adopted by several additional server-owning teams.',
+    image: 'assets/images/projects/vuln.png',
+    parentLink: '#project/vulnerability-remediation',
+    parentLabel: 'VIEW PROJECT',
+  },
+  {
+    origin: 'recommendation',
+    label: 'JUN 2025',
+    body: '"Nathan is sponge. He has an extraordinary ability to quickly learn whatever is put in front of him... He truly is a joy with which to work. I have no doubt that he will bring a very positive and productive energy to whomever he decides to work after he completes his education."',
+    image: 'assets/images/reqDrew.png',
+    parentLink: '#project/rec-drew',
+    parentLabel: 'VIEW RECOMMENDATION',
+    from: 'Drew Rhodes',
+    fromTitle: 'IT Leadership, Centene Corporation',
+  },
+  {
+    origin: 'project',
+    label: 'MAY 2024',
+    body: 'TracerBot: a 3D-printed tracked robot on Raspberry Pi with a pitch-and-yaw turret, a hijacked Orbeez blaster, and an image classification model trained to center on human-shaped targets and fire. Built from scratch by three freshmen who just wanted to move faster than the curriculum.',
+    image: 'assets/images/projects/tracerbot.jpg',
+    parentLink: '#project/tracerbot',
+    parentLabel: 'VIEW PROJECT',
+  },
+  {
+    origin: 'project',
+    label: 'OCT 2021',
+    body: 'Taught myself Python and Excel VBA from scratch to build a cross-referencing tool that caught $70,000 in insurance underpayments hiding in millions of repair order records. It was adopted across the region. This was the project that put me on the path to engineering.',
+    image: 'assets/images/projects/caliber.jpg',
+    parentLink: '#project/caliber-fraud-detection',
+    parentLabel: 'VIEW PROJECT',
+  },
+];
+
 // ─── Project data ─────────────────────────────────────────────────────────────
 
 var PROJECTS = {
@@ -160,6 +349,20 @@ var PROJECTS = {
       'Handed off to the Center for continued development in summer 2026; the project is ongoing.',
     ],
   },
+  'rec-drew': {
+    title: 'Drew Rhodes',
+    image: 'assets/images/reqDrew.png',
+    meta: 'JUN 2025  ·  IT LEADERSHIP  ·  CENTENE CORPORATION',
+    description: 'I had the privilege of hiring and managing Nathan at Centene as an intern for my Site Reliability Engineering team. His performance exceeded expectations in every way. Nathan is a sponge. He absorbs everything he touches and turns it into something real. His natural curiosity drives him to go beyond what is asked, and his ability to collaborate and communicate with senior engineers and leadership from day one set him apart from other interns I have worked with. He took on an open-ended problem, built a system that solved it, and presented it in front of 200 company leaders. That is not typical intern work. I would not hesitate to hire Nathan again.',
+    details: [],
+  },
+  'rec-jen': {
+    title: 'Jennifer Halverson',
+    image: 'assets/images/reqJen.png',
+    meta: 'MAY 2026  ·  RESULTS-DRIVEN LEADER  ·  CENTENE CORPORATION',
+    description: 'I had the opportunity to work with Nathan during his time supporting my team at Centene Corporation. I brought him two complex, open-ended problem statements: one involving cross-referencing Active Directory with ServiceNow to improve employee termination workflows, and one involving dynamically representing Centene\'s Configuration and Service Data Model as an interactive visual in ServiceNow. Both were high-ambiguity, high-impact asks. Nathan consistently exceeded expectations in both technical execution and problem-solving. Beyond the delivery itself, he demonstrated strong analytical thinking, real initiative, and an ability to quickly understand complex operational and data management concepts that most engineers take much longer to internalize. I would highly recommend Nathan.',
+    details: [],
+  },
 };
 
 // ─── Router ───────────────────────────────────────────────────────────────────
@@ -167,11 +370,14 @@ var PROJECTS = {
 (function () {
   var mainContent  = document.getElementById('main-content');
   var projectPage  = document.getElementById('project-page');
+  var storiesPage  = document.getElementById('stories-page');
 
   function showMain() {
     mainContent.style.display  = '';
     projectPage.style.display  = 'none';
     projectPage.setAttribute('aria-hidden', 'true');
+    storiesPage.style.display  = 'none';
+    storiesPage.setAttribute('aria-hidden', 'true');
     mainContent.removeAttribute('aria-hidden');
     document.title = 'Nathan Wardy - Software Engineer';
     var hash = window.location.hash;
@@ -227,6 +433,7 @@ var PROJECTS = {
                 '<li><a href="#projects">INITIATIVES</a></li>' +
                 '<li><a href="#experience">EXPERIENCE</a></li>' +
                 '<li><a href="#education">EDUCATION</a></li>' +
+                '<li><a href="#stories">STORIES</a></li>' +
               '</ul>' +
             '</nav>' +
           '</div>' +
@@ -234,13 +441,23 @@ var PROJECTS = {
       '</header>' +
       '<div class="pp-wrap">' +
         '<button class="pp-back" id="pp-back">← BACK</button>' +
-        '<h1 class="pp-title">' + data.title + '</h1>' +
-        (data.meta ? '<p class="pp-meta">' + data.meta + '</p>' : '') +
-        '<div class="pp-body">' +
-          '<div class="pp-image-col">' +
-            '<canvas class="pp-canvas" id="pp-canvas"></canvas>' +
-          '</div>' +
-        '</div>' +
+        (slug === 'vulnerability-remediation' || slug.indexOf('rec-') === 0
+          ? '<h1 class="pp-title">' + data.title + '</h1>' +
+            (data.meta ? '<p class="pp-meta">' + data.meta + '</p>' : '') +
+            '<div class="pp-body pp-body--stacked">' +
+              '<div class="pp-image-col">' +
+                '<canvas class="pp-canvas" id="pp-canvas"></canvas>' +
+              '</div>' +
+            '</div>'
+          : '<div class="pp-body">' +
+              '<div class="pp-image-col">' +
+                '<canvas class="pp-canvas" id="pp-canvas"></canvas>' +
+              '</div>' +
+              '<div class="pp-title-col">' +
+                '<h1 class="pp-title">' + data.title + '</h1>' +
+                (data.meta ? '<p class="pp-meta">' + data.meta + '</p>' : '') +
+              '</div>' +
+            '</div>') +
         '<div class="pp-divider"></div>' +
         '<p class="pp-description">' + data.description + '</p>' +
         detailsHTML +
@@ -249,6 +466,8 @@ var PROJECTS = {
 
     mainContent.style.display  = 'none';
     mainContent.setAttribute('aria-hidden', 'true');
+    storiesPage.style.display  = 'none';
+    storiesPage.setAttribute('aria-hidden', 'true');
     projectPage.style.display  = '';
     projectPage.removeAttribute('aria-hidden');
     document.title = data.title + ' - Nathan Wardy';
@@ -363,11 +582,113 @@ var PROJECTS = {
 
   // ── Hash routing ──────────────────────────────────────────────────────────
 
+  // ── Stories page ──────────────────────────────────────────────────────────
+
+  var MONTH_NUM = {JAN:1,FEB:2,MAR:3,APR:4,MAY:5,JUN:6,JUL:7,AUG:8,SEP:9,OCT:10,NOV:11,DEC:12};
+  function labelToNum(label) {
+    var p = (label || '').split(' ');
+    return (parseInt(p[1]) || 0) * 100 + (MONTH_NUM[p[0]] || 0);
+  }
+
+  function showStories() {
+    var sorted = STORIES.slice().sort(function (a, b) {
+      return labelToNum(b.label) - labelToNum(a.label);
+    });
+
+    var feedHTML;
+    if (sorted.length === 0) {
+      feedHTML = '<p class="sp-empty">MORE COMING SOON.</p>';
+    } else {
+      feedHTML =
+        '<div class="sp-feed">' +
+          sorted.map(function (s) {
+            var imgHTML = s.video
+              ? '<video class="sp-card-img" src="' + s.video + '" autoplay loop muted playsinline></video>'
+              : (s.image ? '<img class="sp-card-img" src="' + s.image + '" alt="">' : '');
+            var badgeClass  = 'sp-badge--' + s.origin;
+            var logoSrc     = s.origin === 'linkedin'  ? 'assets/images/icons/linkedinlogo.png'
+                            : s.origin === 'instagram' ? 'assets/images/icons/instalogo.png'
+                            : s.origin === 'youtube'   ? 'assets/images/icons/ytlogo.png'
+                            : null;
+            var badgeLabel  = logoSrc
+              ? '<img class="sp-badge-logo" src="' + logoSrc + '" alt="' + s.origin + '">'
+              : s.origin.toUpperCase();
+            var fromHTML    = (s.origin === 'recommendation' && s.from)
+              ? '<div class="sp-card-from"><span class="sp-from-name">' + s.from + '</span><span class="sp-from-title">' + s.fromTitle + '</span></div>'
+              : '';
+            var parentHTML  = s.parentLink
+              ? '<a class="sp-card-link" href="' + s.parentLink + '">' + (s.parentLabel || 'VIEW ↗') + ' ↗</a>'
+              : (s.link
+                ? '<a class="sp-card-link" href="' + s.link + '" target="_blank" rel="noopener noreferrer">' + (s.linkLabel || 'READ ARTICLE') + ' ↗</a>'
+                : '');
+            return '<div class="sp-card">' +
+              imgHTML +
+              '<div class="sp-card-header">' +
+                '<span class="sp-badge ' + badgeClass + '">' + badgeLabel + '</span>' +
+                '<span class="sp-date">' + s.label + '</span>' +
+              '</div>' +
+              (s.body ? '<p class="sp-card-body">' + s.body + '</p>' : '') +
+              fromHTML +
+              parentHTML +
+            '</div>';
+          }).join('') +
+        '</div>';
+    }
+
+    var navHTML =
+      '<header class="header">' +
+        '<div class="container">' +
+          '<div class="content-wrapper">' +
+            '<nav class="nav">' +
+              '<img src="assets/images/favicon/logolight.png" alt="Nathan Wardy" id="sp-logo" class="logo">' +
+              '<ul class="nav-links">' +
+                '<li><a href="#technical">TECHNICAL</a></li>' +
+                '<li><a href="#projects">INITIATIVES</a></li>' +
+                '<li><a href="#experience">EXPERIENCE</a></li>' +
+                '<li><a href="#education">EDUCATION</a></li>' +
+                '<li><a href="#stories">STORIES</a></li>' +
+              '</ul>' +
+            '</nav>' +
+          '</div>' +
+        '</div>' +
+      '</header>';
+
+    storiesPage.innerHTML =
+      navHTML +
+      '<div class="sp-wrap">' +
+        '<button class="sp-back" id="sp-back">← BACK</button>' +
+        '<h1 class="sp-title">STORIES</h1>' +
+        '<div class="sp-divider"></div>' +
+        feedHTML +
+      '</div>';
+
+    mainContent.style.display  = 'none';
+    mainContent.setAttribute('aria-hidden', 'true');
+    projectPage.style.display  = 'none';
+    projectPage.setAttribute('aria-hidden', 'true');
+    storiesPage.style.display  = '';
+    storiesPage.removeAttribute('aria-hidden');
+    document.title = 'Stories - Nathan Wardy';
+    storiesPage.scrollTop = 0;
+
+    document.getElementById('sp-back').addEventListener('click', function () {
+      window.location.hash = '';
+    });
+
+    document.getElementById('sp-logo').addEventListener('click', function () {
+      window.location.hash = '';
+    });
+  }
+
+  // ── Hash routing ──────────────────────────────────────────────────────────
+
   function route() {
     var hash = window.location.hash; // e.g. "#project/caelus"
     if (hash && hash.indexOf('#project/') === 0) {
       var slug = hash.slice('#project/'.length);
       showProject(slug);
+    } else if (hash === '#stories') {
+      showStories();
     } else {
       showMain();
     }

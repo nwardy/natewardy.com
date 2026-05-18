@@ -91,20 +91,20 @@ function initSmoothScrolling() {
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
-            
+
             if (targetElement) {
+                e.preventDefault();
                 const headerHeight = 80; // Fixed header height
                 const targetPosition = targetElement.offsetTop - headerHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
             }
+            // else: let hash change naturally so the router can handle it
         });
     });
 }
@@ -362,17 +362,22 @@ function initScrollCarousel() {
     document.querySelectorAll('.nav-links a[href^="#"], .slide-nav a[href^="#"]')
         .forEach(function(link) {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
                 var id  = link.getAttribute('href').slice(1);
                 var idx = sections.findIndex(function(s) { return s.id === id; });
-                if (idx !== -1) goTo(idx);
+                if (idx !== -1) {
+                    e.preventDefault();
+                    goTo(idx);
+                }
+                // else: let hash change naturally so the router can handle it
             });
         });
 
     // ── Wheel ─────────────────────────────────────────────────────────────────
     window.addEventListener('wheel', function(e) {
         var pp = document.getElementById('project-page');
+        var sp = document.getElementById('stories-page');
         if (pp && pp.style.display !== 'none') return;
+        if (sp && sp.style.display !== 'none') return;
         if (locked) { e.preventDefault(); return; }
 
         var sec = sections[current];
@@ -422,7 +427,9 @@ function initScrollCarousel() {
 
     window.addEventListener('touchend', function(e) {
         var pp = document.getElementById('project-page');
+        var sp = document.getElementById('stories-page');
         if (pp && pp.style.display !== 'none') return;
+        if (sp && sp.style.display !== 'none') return;
         if (locked) return;
         var dy       = touchY0 - e.changedTouches[0].clientY;
         if (Math.abs(dy) < 50) return;

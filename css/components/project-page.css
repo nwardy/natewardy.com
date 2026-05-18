@@ -75,6 +75,16 @@
   line-height: var(--line-height-tight);
 }
 
+/* Meta line: date / location */
+.pp-meta {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-light);
+  letter-spacing: 0.12em;
+  color: var(--color-black);
+  opacity: 0.4;
+  margin: calc(-1 * var(--spacing-lg)) 0 var(--spacing-3xl);
+}
+
 /* Full-width divider */
 .pp-divider {
   width: 100%;
